@@ -5,8 +5,9 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('dashboard') }}" class="flex items-center">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <span class="ml-2 text-xl font-bold text-gray-800">Book Club</span>
                     </a>
                 </div>
 
@@ -15,6 +16,25 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link href="#" :active="request()->routeIs('books.*')">
+                        {{ __('Books') }}
+                    </x-nav-link>
+                    <x-nav-link href="#" :active="request()->routeIs('news.*')">
+                        {{ __('News') }}
+                    </x-nav-link>
+                    <x-nav-link href="#" :active="request()->routeIs('faq.*')">
+                        {{ __('FAQ') }}
+                    </x-nav-link>
+                    <x-nav-link href="#" :active="request()->routeIs('contact.*')">
+                        {{ __('Contact') }}
+                    </x-nav-link>
+                    @auth
+                        @if(auth()->user()->isAdmin())
+                            <x-nav-link href="#" :active="request()->routeIs('admin.*')" class="text-blue-600">
+                                {{ __('Admin') }}
+                            </x-nav-link>
+                        @endif
+                    @endauth
                 </div>
             </div>
 
@@ -70,6 +90,25 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link href="#" :active="request()->routeIs('books.*')">
+                {{ __('Books') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="#" :active="request()->routeIs('news.*')">
+                {{ __('News') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="#" :active="request()->routeIs('faq.*')">
+                {{ __('FAQ') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="#" :active="request()->routeIs('contact.*')">
+                {{ __('Contact') }}
+            </x-responsive-nav-link>
+            @auth
+                @if(auth()->user()->isAdmin())
+                    <x-responsive-nav-link href="#" :active="request()->routeIs('admin.*')" class="text-blue-600">
+                        {{ __('Admin Panel') }}
+                    </x-responsive-nav-link>
+                @endif
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
