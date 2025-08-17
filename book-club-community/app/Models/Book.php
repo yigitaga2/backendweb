@@ -55,7 +55,7 @@ class Book extends Model
     {
         return $this->cover_image
             ? asset('storage/' . $this->cover_image)
-            : asset('images/default-book-cover.png');
+            : asset('images/default-book-cover.svg');
     }
 
     public function updateRating()

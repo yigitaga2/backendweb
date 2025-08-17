@@ -81,6 +81,6 @@ class User extends Authenticatable
     {
         return $this->profile_photo
             ? asset('storage/' . $this->profile_photo)
-            : asset('images/default-avatar.png');
+            : asset('images/default-avatar.svg');
     }
 }
