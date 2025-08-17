@@ -34,7 +34,7 @@
                                 <x-nav-link href="#" :active="request()->routeIs('books.*')">
                                     {{ __('Books') }}
                                 </x-nav-link>
-                                <x-nav-link href="#" :active="request()->routeIs('news.*')">
+                                <x-nav-link :href="route('news.index')" :active="request()->routeIs('news.*')">
                                     {{ __('News') }}
                                 </x-nav-link>
                                 <x-nav-link href="#" :active="request()->routeIs('faq.*')">
@@ -74,7 +74,7 @@
                         <x-responsive-nav-link href="#" :active="request()->routeIs('books.*')">
                             {{ __('Books') }}
                         </x-responsive-nav-link>
-                        <x-responsive-nav-link href="#" :active="request()->routeIs('news.*')">
+                        <x-responsive-nav-link :href="route('news.index')" :active="request()->routeIs('news.*')">
                             {{ __('News') }}
                         </x-responsive-nav-link>
                         <x-responsive-nav-link href="#" :active="request()->routeIs('faq.*')">

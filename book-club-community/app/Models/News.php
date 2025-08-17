@@ -28,13 +28,19 @@ class News extends Model
         ];
     }
 
-    // Relationships
-    public function user()
+    /**
+     * Get the featured image URL.
+     */
+    public function getFeaturedImageUrlAttribute()
     {
-        return $this->belongsTo(User::class);
+        return $this->featured_image
+            ? asset('storage/' . $this->featured_image)
+            : null;
     }
 
-    // Scopes
+    /**
+     * Scope to get only published news.
+     */
     public function scopePublished($query)
     {
         return $query->where('is_published', true)
@@ -42,9 +48,10 @@ class News extends Model
                     ->where('published_at', '<=', now());
     }
 
-    public function scopeLatest($query)
+    // Relationships
+    public function user()
     {
-        return $query->orderBy('published_at', 'desc');
+        return $this->belongsTo(User::class);
     }
 
     // Mutators
@@ -58,13 +65,6 @@ class News extends Model
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    public function getFeaturedImageUrlAttribute()
-    {
-        return $this->featured_image
-            ? asset('storage/' . $this->featured_image)
-            : asset('images/default-news.png');
     }
 
     public function getExcerptAttribute($length = 150)
