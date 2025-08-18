@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\NewsController;
@@ -30,7 +33,18 @@ Route::middleware('auth')->group(function () {
 });
 
 // Admin only routes
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    // Admin Dashboard
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    // User Management
+    Route::resource('users', AdminUserController::class)->only(['index', 'show', 'destroy']);
+    Route::patch('/users/{user}/toggle-admin', [AdminUserController::class, 'toggleAdmin'])->name('users.toggle-admin');
+
+    // Contact Management
+    Route::resource('contacts', AdminContactController::class)->only(['index', 'show', 'destroy']);
+    Route::patch('/contacts/{contact}/toggle-read', [AdminContactController::class, 'toggleRead'])->name('contacts.toggle-read');
+
     // News management
     Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
     Route::post('/news', [NewsController::class, 'store'])->name('news.store');

@@ -30,7 +30,7 @@
                     </x-nav-link>
                     @auth
                         @if(auth()->user()->isAdmin())
-                            <x-nav-link href="#" :active="request()->routeIs('admin.*')" class="text-blue-600">
+                            <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')" class="text-blue-600">
                                 {{ __('Admin') }}
                             </x-nav-link>
                         @endif
