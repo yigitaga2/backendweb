@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserLibraryController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.index
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
+Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
 
 // Authenticated user routes
 Route::middleware('auth')->group(function () {
@@ -44,6 +46,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/library', [UserLibraryController::class, 'store'])->name('library.store');
     Route::patch('/library/{book}', [UserLibraryController::class, 'update'])->name('library.update');
     Route::delete('/library/{book}', [UserLibraryController::class, 'destroy'])->name('library.destroy');
+
+    // Review management
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::patch('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
 
 // Admin only routes
