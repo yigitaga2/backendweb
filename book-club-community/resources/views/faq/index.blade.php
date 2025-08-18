@@ -87,7 +87,7 @@
             <div class="mt-8 bg-blue-50 rounded-lg p-6">
                 <h2 class="text-lg font-semibold text-blue-900 mb-2">Still have questions?</h2>
                 <p class="text-blue-800 mb-4">Can't find what you're looking for? We're here to help!</p>
-                <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+                <a href="{{ route('contact.index') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
                     📧 Contact us →
                 </a>
             </div>
