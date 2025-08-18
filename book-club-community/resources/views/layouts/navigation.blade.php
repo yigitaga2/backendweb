@@ -16,7 +16,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="#" :active="request()->routeIs('books.*')">
+                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.*')">
                         {{ __('Books') }}
                     </x-nav-link>
                     <x-nav-link :href="route('news.index')" :active="request()->routeIs('news.*')">
@@ -29,6 +29,9 @@
                         {{ __('Contact') }}
                     </x-nav-link>
                     @auth
+                        <x-nav-link :href="route('library.index')" :active="request()->routeIs('library.*')">
+                            {{ __('My Library') }}
+                        </x-nav-link>
                         @if(auth()->user()->isAdmin())
                             <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')" class="text-blue-600">
                                 {{ __('Admin') }}

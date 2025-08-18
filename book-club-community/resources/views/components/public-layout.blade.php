@@ -31,7 +31,7 @@
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <x-nav-link href="#" :active="request()->routeIs('books.*')">
+                                <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.*')">
                                     {{ __('Books') }}
                                 </x-nav-link>
                                 <x-nav-link :href="route('news.index')" :active="request()->routeIs('news.*')">
@@ -71,7 +71,7 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <x-responsive-nav-link href="#" :active="request()->routeIs('books.*')">
+                        <x-responsive-nav-link :href="route('books.index')" :active="request()->routeIs('books.*')">
                             {{ __('Books') }}
                         </x-responsive-nav-link>
                         <x-responsive-nav-link :href="route('news.index')" :active="request()->routeIs('news.*')">
