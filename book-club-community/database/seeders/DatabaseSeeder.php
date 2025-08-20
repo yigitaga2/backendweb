@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         // Seed admin user and sample users
         $this->call([
             AdminUserSeeder::class,
+            NewsSeeder::class,
+            FaqSeeder::class,
         ]);
     }
 }
