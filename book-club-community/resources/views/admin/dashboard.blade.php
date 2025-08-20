@@ -79,13 +79,13 @@
                             <div class="text-2xl text-orange-600 mb-2">📧</div>
                             <div class="text-sm font-medium text-orange-900">View Messages</div>
                         </a>
-                        <a href="{{ route('admin.news.create') }}" class="flex flex-col items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition duration-150">
+                        <a href="{{ route('admin.news.index') }}" class="flex flex-col items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition duration-150">
                             <div class="text-2xl text-purple-600 mb-2">📰</div>
-                            <div class="text-sm font-medium text-purple-900">Create News</div>
+                            <div class="text-sm font-medium text-purple-900">Manage News</div>
                         </a>
-                        <a href="{{ route('admin.faq.create') }}" class="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition duration-150">
+                        <a href="{{ route('admin.faq.index') }}" class="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition duration-150">
                             <div class="text-2xl text-green-600 mb-2">❓</div>
-                            <div class="text-sm font-medium text-green-900">Add FAQ</div>
+                            <div class="text-sm font-medium text-green-900">Manage FAQ</div>
                         </a>
                     </div>
                 </div>
