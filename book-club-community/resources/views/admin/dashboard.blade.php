@@ -70,10 +70,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-8">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-900 mb-4">🚀 Quick Actions</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
                         <a href="{{ route('admin.users.index') }}" class="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition duration-150">
                             <div class="text-2xl text-blue-600 mb-2">👥</div>
                             <div class="text-sm font-medium text-blue-900">Manage Users</div>
+                        </a>
+                        <a href="{{ route('books.create') }}" class="flex flex-col items-center p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition duration-150">
+                            <div class="text-2xl text-indigo-600 mb-2">📚</div>
+                            <div class="text-sm font-medium text-indigo-900">Add Book</div>
                         </a>
                         <a href="{{ route('admin.contacts.index') }}" class="flex flex-col items-center p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition duration-150">
                             <div class="text-2xl text-orange-600 mb-2">📧</div>
