@@ -23,13 +23,13 @@
                 <div class="p-6">
                     <form method="GET" action="{{ route('books.index') }}" class="flex flex-col md:flex-row gap-4">
                         <div class="flex-1">
-                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Search books by title, author, genre, or ISBN..." class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Search books by title, author, publisher, or ISBN..." class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                         </div>
                         <div>
-                            <select name="genre" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                                <option value="">All Genres</option>
-                                @foreach($genres as $genre)
-                                    <option value="{{ $genre }}" {{ request('genre') === $genre ? 'selected' : '' }}>{{ $genre }}</option>
+                            <select name="publisher" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                <option value="">All Publishers</option>
+                                @foreach($publishers as $publisher)
+                                    <option value="{{ $publisher }}" {{ request('publisher') === $publisher ? 'selected' : '' }}>{{ $publisher }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -61,15 +61,15 @@
                                     </a>
                                 </h3>
                                 <p class="text-gray-600 mb-2">by {{ $book->author }}</p>
-                                
-                                @if($book->genre)
+
+                                @if($book->publisher)
                                     <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mb-2">
-                                        {{ $book->genre }}
+                                        {{ $book->publisher }}
                                     </span>
                                 @endif
-                                
-                                @if($book->published_year)
-                                    <p class="text-sm text-gray-500 mb-3">Published: {{ $book->published_year }}</p>
+
+                                @if($book->publication_date)
+                                    <p class="text-sm text-gray-500 mb-3">Published: {{ $book->publication_date->format('Y') }}</p>
                                 @endif
                                 
                                 <div class="flex items-center justify-between">

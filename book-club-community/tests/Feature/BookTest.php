@@ -46,9 +46,9 @@ class BookTest extends TestCase
             'author' => 'Test Author',
             'isbn' => '978-0123456789',
             'description' => 'A great test book',
-            'publication_year' => 2023,
+            'publication_date' => '2023-01-01',
             'pages' => 300,
-            'genre' => 'Fiction',
+            'publisher' => 'Test Publisher',
             'cover_image' => UploadedFile::fake()->image('cover.jpg')
         ];
 
@@ -99,15 +99,15 @@ class BookTest extends TestCase
         $response->assertDontSee('Lord of the Rings');
     }
 
-    public function test_books_can_be_filtered_by_genre(): void
+    public function test_books_can_be_filtered_by_publisher(): void
     {
-        Book::factory()->create(['title' => 'Fantasy Book', 'genre' => 'Fantasy']);
-        Book::factory()->create(['title' => 'Mystery Book', 'genre' => 'Mystery']);
+        Book::factory()->create(['title' => 'Penguin Book', 'publisher' => 'Penguin']);
+        Book::factory()->create(['title' => 'Random House Book', 'publisher' => 'Random House']);
 
-        $response = $this->get('/books?genre=Fantasy');
+        $response = $this->get('/books?publisher=Penguin');
 
         $response->assertStatus(200);
-        $response->assertSee('Fantasy Book');
-        $response->assertDontSee('Mystery Book');
+        $response->assertSee('Penguin Book');
+        $response->assertDontSee('Random House Book');
     }
 }

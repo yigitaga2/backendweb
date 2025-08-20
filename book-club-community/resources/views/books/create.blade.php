@@ -26,7 +26,7 @@
                             <x-input-error class="mt-2" :messages="$errors->get('author')" />
                         </div>
 
-                        <!-- ISBN and Genre -->
+                        <!-- ISBN and Publisher -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <x-input-label for="isbn" :value="__('ISBN (optional)')" />
@@ -35,18 +35,18 @@
                             </div>
 
                             <div>
-                                <x-input-label for="genre" :value="__('Genre (optional)')" />
-                                <x-text-input id="genre" name="genre" type="text" class="mt-1 block w-full" :value="old('genre')" placeholder="Fiction, Mystery, Romance, etc." />
-                                <x-input-error class="mt-2" :messages="$errors->get('genre')" />
+                                <x-input-label for="publisher" :value="__('Publisher (optional)')" />
+                                <x-text-input id="publisher" name="publisher" type="text" class="mt-1 block w-full" :value="old('publisher')" placeholder="Penguin Random House, etc." />
+                                <x-input-error class="mt-2" :messages="$errors->get('publisher')" />
                             </div>
                         </div>
 
-                        <!-- Published Year and Pages -->
+                        <!-- Publication Date and Pages -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <x-input-label for="published_year" :value="__('Published Year (optional)')" />
-                                <x-text-input id="published_year" name="published_year" type="number" min="1000" max="{{ date('Y') + 1 }}" class="mt-1 block w-full" :value="old('published_year')" placeholder="{{ date('Y') }}" />
-                                <x-input-error class="mt-2" :messages="$errors->get('published_year')" />
+                                <x-input-label for="publication_date" :value="__('Publication Date (optional)')" />
+                                <x-text-input id="publication_date" name="publication_date" type="date" class="mt-1 block w-full" :value="old('publication_date')" />
+                                <x-input-error class="mt-2" :messages="$errors->get('publication_date')" />
                             </div>
 
                             <div>

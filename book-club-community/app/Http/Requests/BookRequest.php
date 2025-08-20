@@ -26,9 +26,9 @@ class BookRequest extends FormRequest
             'author' => ['required', 'string', 'max:255'],
             'isbn' => ['nullable', 'string', 'max:20'],
             'description' => ['nullable', 'string', 'max:2000'],
-            'published_year' => ['nullable', 'integer', 'min:1000', 'max:' . (date('Y') + 1)],
+            'publication_date' => ['nullable', 'date'],
             'pages' => ['nullable', 'integer', 'min:1'],
-            'genre' => ['nullable', 'string', 'max:100'],
+            'publisher' => ['nullable', 'string', 'max:255'],
             'cover_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ];
     }

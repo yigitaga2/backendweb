@@ -22,20 +22,20 @@ class BookController extends Controller
             $query->where(function($q) use ($search) {
                 $q->where('title', 'like', "%{$search}%")
                   ->orWhere('author', 'like', "%{$search}%")
-                  ->orWhere('genre', 'like', "%{$search}%")
+                  ->orWhere('publisher', 'like', "%{$search}%")
                   ->orWhere('isbn', 'like', "%{$search}%");
             });
         }
 
-        // Filter by genre
-        if ($request->filled('genre')) {
-            $query->where('genre', $request->genre);
+        // Filter by publisher
+        if ($request->filled('publisher')) {
+            $query->where('publisher', $request->publisher);
         }
 
         $books = $query->latest()->paginate(12);
-        $genres = Book::distinct()->pluck('genre')->filter()->sort();
+        $publishers = Book::distinct()->pluck('publisher')->filter()->sort();
 
-        return view('books.index', compact('books', 'genres'));
+        return view('books.index', compact('books', 'publishers'));
     }
 
     /**

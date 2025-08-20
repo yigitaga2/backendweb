@@ -22,19 +22,19 @@
                             
                             <!-- Book Metadata -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                                @if($book->genre)
+                                @if($book->publisher)
                                     <div>
-                                        <span class="text-sm font-medium text-gray-500">Genre:</span>
+                                        <span class="text-sm font-medium text-gray-500">Publisher:</span>
                                         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 ml-2">
-                                            {{ $book->genre }}
+                                            {{ $book->publisher }}
                                         </span>
                                     </div>
                                 @endif
-                                
-                                @if($book->published_year)
+
+                                @if($book->publication_date)
                                     <div>
                                         <span class="text-sm font-medium text-gray-500">Published:</span>
-                                        <span class="text-sm text-gray-900 ml-2">{{ $book->published_year }}</span>
+                                        <span class="text-sm text-gray-900 ml-2">{{ $book->publication_date->format('F j, Y') }}</span>
                                     </div>
                                 @endif
                                 

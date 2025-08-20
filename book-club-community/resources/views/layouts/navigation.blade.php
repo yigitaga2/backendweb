@@ -36,8 +36,8 @@
                             {{ __('My Library') }}
                         </x-nav-link>
                         @if(auth()->user()->isAdmin())
-                            <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')" class="text-blue-600">
-                                {{ __('Admin') }}
+                            <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')" class="text-blue-600 font-semibold">
+                                👑 {{ __('Admin') }}
                             </x-nav-link>
                         @endif
                     @endauth

@@ -18,8 +18,6 @@ class Book extends Model
         'publication_date',
         'pages',
         'publisher',
-        'average_rating',
-        'total_reviews',
     ];
 
     protected function casts(): array

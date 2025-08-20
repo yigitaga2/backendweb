@@ -50,11 +50,14 @@
                         </div>
 
                         <!-- Auth Links -->
-                        <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <div class="hidden sm:flex sm:items-center sm:ms-6 space-x-4">
                             @auth
+                                @if(auth()->user()->isAdmin())
+                                    <a href="{{ route('admin.dashboard') }}" class="text-sm text-blue-600 font-semibold underline">👑 Admin</a>
+                                @endif
                                 <a href="{{ route('dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
                             @else
-                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline mr-4">Log in</a>
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
                                 <a href="{{ route('register') }}" class="text-sm text-gray-700 underline">Register</a>
                             @endauth
                         </div>

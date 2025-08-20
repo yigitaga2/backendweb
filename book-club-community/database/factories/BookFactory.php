@@ -21,12 +21,9 @@ class BookFactory extends Factory
             'author' => $this->faker->name(),
             'isbn' => $this->faker->isbn13(),
             'description' => $this->faker->paragraph(3),
-            'publication_year' => $this->faker->numberBetween(1900, 2024),
+            'publication_date' => $this->faker->date(),
             'pages' => $this->faker->numberBetween(100, 1000),
-            'genre' => $this->faker->randomElement([
-                'Fiction', 'Non-Fiction', 'Mystery', 'Romance', 'Science Fiction',
-                'Fantasy', 'Biography', 'History', 'Self-Help', 'Thriller'
-            ]),
+            'publisher' => $this->faker->company(),
             'cover_image' => null,
         ];
     }
