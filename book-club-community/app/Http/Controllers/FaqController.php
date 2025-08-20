@@ -19,6 +19,36 @@ class FaqController extends Controller
     }
 
     /**
+     * Display admin listing of all FAQs (including drafts).
+     */
+    public function adminIndex(Request $request)
+    {
+        $query = Faq::query();
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('question', 'like', "%{$search}%")
+                  ->orWhere('answer', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by status
+        if ($request->filled('status')) {
+            if ($request->status === 'published') {
+                $query->published();
+            } elseif ($request->status === 'draft') {
+                $query->draft();
+            }
+        }
+
+        $faqs = $query->ordered()->paginate(12);
+
+        return view('admin.faq.index', compact('faqs'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

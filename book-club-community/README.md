@@ -108,8 +108,8 @@ A comprehensive Laravel-based web application for book lovers to discover, revie
 ## 👤 Default Admin Account
 
 After running the seeders, you can log in with:
-- **Email**: admin@bookclub.com
-- **Password**: password
+- **Email**: admin@ehb.be
+- **Password**: Password!321
 
 ## 🧪 Testing
 

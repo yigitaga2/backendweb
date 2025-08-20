@@ -20,6 +20,36 @@ class NewsController extends Controller
     }
 
     /**
+     * Display admin listing of all news (including drafts).
+     */
+    public function adminIndex(Request $request)
+    {
+        $query = News::query();
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('content', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by status
+        if ($request->filled('status')) {
+            if ($request->status === 'published') {
+                $query->published();
+            } elseif ($request->status === 'draft') {
+                $query->draft();
+            }
+        }
+
+        $news = $query->latest()->paginate(12);
+
+        return view('admin.news.index', compact('news'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

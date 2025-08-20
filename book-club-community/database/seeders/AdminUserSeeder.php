@@ -14,37 +14,43 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         // Create the default admin user as specified in requirements
-        User::create([
-            'name' => 'Administrator',
-            'username' => 'admin',
-            'email' => 'admin@ehb.be',
-            'password' => Hash::make('Password!321'),
-            'is_admin' => true,
-            'about_me' => 'Default administrator account for the Book Club Community platform.',
-            'email_verified_at' => now(),
-        ]);
+        User::updateOrCreate(
+            ['username' => 'admin'], // Find by username
+            [
+                'name' => 'Administrator',
+                'email' => 'admin@ehb.be',
+                'password' => Hash::make('Password!321'),
+                'is_admin' => true,
+                'about_me' => 'Default administrator account for the Book Club Community platform.',
+                'email_verified_at' => now(),
+            ]
+        );
 
         // Create a few sample regular users for testing
-        User::create([
-            'name' => 'John Doe',
-            'username' => 'johndoe',
-            'email' => 'john@example.com',
-            'password' => Hash::make('password'),
-            'is_admin' => false,
-            'birthday' => '1990-05-15',
-            'about_me' => 'Book lover and avid reader. Enjoys fantasy and science fiction novels.',
-            'email_verified_at' => now(),
-        ]);
+        User::updateOrCreate(
+            ['username' => 'johndoe'], // Find by username
+            [
+                'name' => 'John Doe',
+                'email' => 'john@example.com',
+                'password' => Hash::make('password'),
+                'is_admin' => false,
+                'birthday' => '1990-05-15',
+                'about_me' => 'Book lover and avid reader. Enjoys fantasy and science fiction novels.',
+                'email_verified_at' => now(),
+            ]
+        );
 
-        User::create([
-            'name' => 'Jane Smith',
-            'username' => 'janesmith',
-            'email' => 'jane@example.com',
-            'password' => Hash::make('password'),
-            'is_admin' => false,
-            'birthday' => '1985-08-22',
-            'about_me' => 'Literature enthusiast with a passion for classic novels and poetry.',
-            'email_verified_at' => now(),
-        ]);
+        User::updateOrCreate(
+            ['username' => 'janesmith'], // Find by username
+            [
+                'name' => 'Jane Smith',
+                'email' => 'jane@example.com',
+                'password' => Hash::make('password'),
+                'is_admin' => false,
+                'birthday' => '1985-08-22',
+                'about_me' => 'Literature enthusiast with a passion for classic novels and poetry.',
+                'email_verified_at' => now(),
+            ]
+        );
     }
 }

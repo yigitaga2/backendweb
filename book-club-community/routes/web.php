@@ -67,6 +67,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::patch('/contacts/{contact}/toggle-read', [AdminContactController::class, 'toggleRead'])->name('contacts.toggle-read');
 
     // News management
+    Route::get('/news', [NewsController::class, 'adminIndex'])->name('news.index');
     Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
     Route::post('/news', [NewsController::class, 'store'])->name('news.store');
     Route::get('/news/{news:slug}/edit', [NewsController::class, 'edit'])->name('news.edit');
@@ -74,6 +75,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::delete('/news/{news:slug}', [NewsController::class, 'destroy'])->name('news.destroy');
 
     // FAQ management
+    Route::get('/faq', [FaqController::class, 'adminIndex'])->name('faq.index');
     Route::get('/faq/create', [FaqController::class, 'create'])->name('faq.create');
     Route::post('/faq', [FaqController::class, 'store'])->name('faq.store');
     Route::get('/faq/{faq}/edit', [FaqController::class, 'edit'])->name('faq.edit');
