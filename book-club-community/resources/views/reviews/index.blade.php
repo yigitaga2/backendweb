@@ -68,7 +68,7 @@
                                                         {{ $review->user->name }}
                                                     </a>
                                                 </h4>
-                                                <div class="text-yellow-400 text-sm">{{ str_repeat('⭐', $review->stars) }}</div>
+                                                <div class="text-yellow-400 text-sm">{{ str_repeat('⭐', $review->rating) }}</div>
                                             </div>
                                         </div>
                                         <span class="text-xs text-gray-500">{{ $review->created_at->diffForHumans() }}</span>

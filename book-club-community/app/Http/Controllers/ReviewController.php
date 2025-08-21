@@ -18,7 +18,7 @@ class ReviewController extends Controller
 
         // Filter by rating
         if ($request->filled('stars')) {
-            $query->where('stars', $request->stars);
+            $query->where('rating', $request->stars);
         }
 
         // Search functionality
