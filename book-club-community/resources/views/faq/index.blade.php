@@ -41,10 +41,10 @@
                                     @auth
                                         @if(auth()->user()->isAdmin())
                                             <div class="flex space-x-2 ml-4">
-                                                <a href="{{ route('faq.edit', $faq) }}" class="text-gray-500 hover:text-blue-600 transition duration-150">
+                                                <a href="{{ route('admin.faq.edit', $faq) }}" class="text-gray-500 hover:text-blue-600 transition duration-150">
                                                     ✏️
                                                 </a>
-                                                <form method="POST" action="{{ route('faq.destroy', $faq) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this FAQ?')">
+                                                <form method="POST" action="{{ route('admin.faq.destroy', $faq) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this FAQ?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="text-gray-500 hover:text-red-600 transition duration-150">
