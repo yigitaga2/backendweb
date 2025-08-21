@@ -25,6 +25,7 @@ class FaqRequest extends FormRequest
         return [
             'question' => ['required', 'string', 'max:500'],
             'answer' => ['required', 'string'],
+            'category_id' => ['required', 'exists:categories,id'],
             'is_published' => ['boolean'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ];
