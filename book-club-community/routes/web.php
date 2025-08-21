@@ -28,7 +28,6 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
-Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
 Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
 
 // Authenticated user routes
@@ -37,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Book management
+    // Book management (create route must come before show route)
     Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
     Route::post('/books', [BookController::class, 'store'])->name('books.store');
 
@@ -52,6 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
     Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 });
+
+// Book show route (must come after create route to avoid conflicts)
+Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
 
 // Admin only routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
