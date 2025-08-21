@@ -54,6 +54,11 @@ class NewsController extends Controller
      */
     public function create()
     {
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return view('admin.news.create');
+        }
+
         return view('news.create');
     }
 
@@ -80,6 +85,12 @@ class NewsController extends Controller
 
         $news = News::create($validated);
 
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return redirect()->route('admin.news.index')
+                ->with('success', 'News article created successfully! 🎉');
+        }
+
         return redirect()->route('news.show', $news)
             ->with('success', 'News article created successfully! 🎉');
     }
@@ -102,6 +113,11 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return view('admin.news.edit', compact('news'));
+        }
+
         return view('news.edit', compact('news'));
     }
 
@@ -130,6 +146,12 @@ class NewsController extends Controller
 
         $news->update($validated);
 
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return redirect()->route('admin.news.index')
+                ->with('success', 'News article updated successfully! ✨');
+        }
+
         return redirect()->route('news.show', $news)
             ->with('success', 'News article updated successfully! ✨');
     }
@@ -145,6 +167,12 @@ class NewsController extends Controller
         }
 
         $news->delete();
+
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return redirect()->route('admin.news.index')
+                ->with('success', 'News article deleted successfully! 🗑️');
+        }
 
         return redirect()->route('news.index')
             ->with('success', 'News article deleted successfully! 🗑️');

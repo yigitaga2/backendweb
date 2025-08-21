@@ -53,6 +53,11 @@ class FaqController extends Controller
      */
     public function create()
     {
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return view('admin.faq.create');
+        }
+
         return view('faq.create');
     }
 
@@ -69,6 +74,12 @@ class FaqController extends Controller
         }
 
         Faq::create($validated);
+
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return redirect()->route('admin.faq.index')
+                ->with('success', 'FAQ created successfully! 🎉');
+        }
 
         return redirect()->route('faq.index')
             ->with('success', 'FAQ created successfully! 🎉');
@@ -88,6 +99,11 @@ class FaqController extends Controller
      */
     public function edit(Faq $faq)
     {
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return view('admin.faq.edit', compact('faq'));
+        }
+
         return view('faq.edit', compact('faq'));
     }
 
@@ -97,6 +113,12 @@ class FaqController extends Controller
     public function update(FaqRequest $request, Faq $faq)
     {
         $faq->update($request->validated());
+
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return redirect()->route('admin.faq.index')
+                ->with('success', 'FAQ updated successfully! ✨');
+        }
 
         return redirect()->route('faq.index')
             ->with('success', 'FAQ updated successfully! ✨');
@@ -108,6 +130,12 @@ class FaqController extends Controller
     public function destroy(Faq $faq)
     {
         $faq->delete();
+
+        // Check if this is an admin route
+        if (request()->routeIs('admin.*')) {
+            return redirect()->route('admin.faq.index')
+                ->with('success', 'FAQ deleted successfully! 🗑️');
+        }
 
         return redirect()->route('faq.index')
             ->with('success', 'FAQ deleted successfully! 🗑️');
