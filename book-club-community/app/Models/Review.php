@@ -61,6 +61,11 @@ class Review extends Model
 
     public function getStarsAttribute()
     {
+        return $this->rating; // Return numeric rating for compatibility
+    }
+
+    public function getStarsDisplayAttribute()
+    {
         return str_repeat('★', $this->rating) . str_repeat('☆', 5 - $this->rating);
     }
 }

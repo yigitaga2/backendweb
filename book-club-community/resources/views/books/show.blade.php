@@ -58,9 +58,9 @@
                                 <div class="flex items-center space-x-4">
                                     <div class="text-2xl text-yellow-400">
                                         @if($book->reviews()->count() > 0)
-                                            {{ str_repeat('⭐', round($book->reviews()->avg('stars'))) }}
+                                            {{ str_repeat('⭐', round($book->reviews()->avg('rating'))) }}
                                             <span class="text-lg text-gray-600 ml-2">
-                                                {{ number_format($book->reviews()->avg('stars'), 1) }}/5
+                                                {{ number_format($book->reviews()->avg('rating'), 1) }}/5
                                             </span>
                                         @else
                                             <span class="text-gray-400">No ratings yet</span>
@@ -154,7 +154,7 @@
                             <h3 class="text-lg font-semibold text-gray-900 mb-4">Your Review</h3>
                             <div class="bg-blue-50 rounded-lg p-4 mb-4">
                                 <div class="flex items-center justify-between mb-2">
-                                    <div class="text-yellow-400 text-lg">{{ str_repeat('⭐', $userReview->stars) }}</div>
+                                    <div class="text-yellow-400 text-lg">{{ str_repeat('⭐', $userReview->rating) }}</div>
                                     <span class="text-sm text-gray-500">{{ $userReview->created_at->diffForHumans() }}</span>
                                 </div>
                                 @if($userReview->review)
@@ -179,7 +179,7 @@
                                         <label class="block text-sm font-medium text-gray-700 mb-2">Rating</label>
                                         <div class="flex space-x-1">
                                             @for($i = 1; $i <= 5; $i++)
-                                                <input type="radio" name="stars" value="{{ $i }}" id="edit-star-{{ $i }}" class="sr-only" {{ $userReview->stars == $i ? 'checked' : '' }}>
+                                                <input type="radio" name="stars" value="{{ $i }}" id="edit-star-{{ $i }}" class="sr-only" {{ $userReview->rating == $i ? 'checked' : '' }}>
                                                 <label for="edit-star-{{ $i }}" class="cursor-pointer text-2xl text-gray-300 hover:text-yellow-400 transition-colors">⭐</label>
                                             @endfor
                                         </div>
@@ -263,7 +263,7 @@
                                                             {{ $review->user->name }}
                                                         </a>
                                                     </h4>
-                                                    <div class="text-yellow-400">{{ str_repeat('⭐', $review->stars) }}</div>
+                                                    <div class="text-yellow-400">{{ str_repeat('⭐', $review->rating) }}</div>
                                                 </div>
                                                 <span class="text-sm text-gray-500">{{ $review->created_at->diffForHumans() }}</span>
                                             </div>

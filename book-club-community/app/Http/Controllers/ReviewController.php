@@ -53,6 +53,12 @@ class ReviewController extends Controller
         $validated = $request->validated();
         $validated['user_id'] = auth()->id();
 
+        // Map 'stars' field to 'rating' for database
+        if (isset($validated['stars'])) {
+            $validated['rating'] = $validated['stars'];
+            unset($validated['stars']);
+        }
+
         // Check if user already reviewed this book
         $existingReview = Review::where('user_id', auth()->id())
                                ->where('book_id', $validated['book_id'])
@@ -96,7 +102,15 @@ class ReviewController extends Controller
                 ->with('error', 'You can only edit your own reviews! 🚫');
         }
 
-        $review->update($request->validated());
+        $validated = $request->validated();
+
+        // Map 'stars' field to 'rating' for database
+        if (isset($validated['stars'])) {
+            $validated['rating'] = $validated['stars'];
+            unset($validated['stars']);
+        }
+
+        $review->update($validated);
 
         return redirect()->back()
             ->with('success', 'Review updated successfully! ✨');
