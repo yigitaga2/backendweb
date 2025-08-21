@@ -56,10 +56,10 @@
                                     @auth
                                         @if(auth()->user()->isAdmin())
                                             <div class="flex space-x-2">
-                                                <a href="{{ route('news.edit', $article) }}" class="text-gray-500 hover:text-blue-600">
+                                                <a href="{{ route('admin.news.edit', $article) }}" class="text-gray-500 hover:text-blue-600">
                                                     ✏️
                                                 </a>
-                                                <form method="POST" action="{{ route('news.destroy', $article) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this article?')">
+                                                <form method="POST" action="{{ route('admin.news.destroy', $article) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this article?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="text-gray-500 hover:text-red-600">

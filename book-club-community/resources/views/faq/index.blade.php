@@ -11,7 +11,7 @@
                         </div>
                         @auth
                             @if(auth()->user()->isAdmin())
-                                <a href="{{ route('faq.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                                <a href="{{ route('admin.faq.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
                                     ➕ Add FAQ
                                 </a>
                             @endif
@@ -74,7 +74,7 @@
                         <p class="text-gray-600 mb-6">We're working on building a comprehensive FAQ section to help answer your questions!</p>
                         @auth
                             @if(auth()->user()->isAdmin())
-                                <a href="{{ route('faq.create') }}" class="inline-flex items-center px-6 py-3 bg-blue-600 border border-transparent rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                                <a href="{{ route('admin.faq.create') }}" class="inline-flex items-center px-6 py-3 bg-blue-600 border border-transparent rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
                                     ➕ Create First FAQ
                                 </a>
                             @endif

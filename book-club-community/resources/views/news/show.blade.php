@@ -30,10 +30,10 @@
                             @auth
                                 @if(auth()->user()->isAdmin())
                                     <div class="flex space-x-2">
-                                        <a href="{{ route('news.edit', $news) }}" class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        <a href="{{ route('admin.news.edit', $news) }}" class="inline-flex items-center px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                             ✏️ Edit
                                         </a>
-                                        <form method="POST" action="{{ route('news.destroy', $news) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this article?')">
+                                        <form method="POST" action="{{ route('admin.news.destroy', $news) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this article?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="inline-flex items-center px-3 py-1 border border-red-300 rounded-md text-sm font-medium text-red-700 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
