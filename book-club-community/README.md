@@ -178,6 +178,54 @@ Comprehensive admin panel featuring:
 - Platform statistics and insights
 - Content moderation tools
 
+## 🌐 Application Routes
+
+### Public Routes
+- **Home**: `/` - Welcome page
+- **Books**: `/books` - Browse book collection
+- **Reviews**: `/reviews` - Community reviews
+- **News**: `/news` - Latest news and updates
+- **FAQ**: `/faq` - Frequently asked questions
+- **Contact**: `/contact` - Contact form
+
+### User Routes (Authentication Required)
+- **Dashboard**: `/dashboard` - User dashboard
+- **My Library**: `/library` - Personal book library
+- **Add Book**: `/books/create` - Add new books
+- **Profile**: `/profile` - Edit profile settings
+
+### Admin Routes (Admin Access Required)
+- **Admin Dashboard**: `/admin` - Admin control panel
+- **User Management**: `/admin/users` - Manage users
+- **News Management**: `/admin/news` - Manage news articles
+- **FAQ Management**: `/admin/faq` - Manage FAQ items
+- **Contact Management**: `/admin/contacts` - Handle inquiries
+
+## ✅ System Status
+
+All routes and functionality have been tested and are working correctly:
+
+- ✅ **User Registration & Login** - Complete with username field
+- ✅ **Book Management** - Create, view, search, and filter books
+- ✅ **Review System** - Star ratings and text reviews working
+- ✅ **Personal Library** - Add books and track reading status
+- ✅ **Admin Panel** - Full CRUD operations for all content
+- ✅ **News System** - Create, edit, and publish articles
+- ✅ **FAQ System** - Manage help content
+- ✅ **Contact System** - Handle user inquiries
+- ✅ **Navigation** - All navigation links working properly
+- ✅ **Authentication** - Secure access control
+- ✅ **File Uploads** - Book covers and news images
+- ✅ **Search & Filtering** - Advanced search functionality
+
+## 🚀 Quick Start Guide
+
+1. **Register a new account** or use the admin account
+2. **Browse books** at `/books` and add them to your library
+3. **Leave reviews** with star ratings and comments
+4. **Manage your library** at `/library` with reading statuses
+5. **Admin users** can access `/admin` for content management
+
 ## 🔧 Configuration
 
 ### File Uploads
